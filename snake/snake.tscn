@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7n71nwatqscu"]
+
+[ext_resource type="Script" uid="uid://5y54kp6eae3h" path="res://snake/snake.gd" id="1_iujm3"]
+[ext_resource type="Texture2D" uid="uid://dbtca54mg218v" path="res://snake/head-1.png" id="1_j2kkt"]
+[ext_resource type="Texture2D" uid="uid://b05pqhxkmkw5e" path="res://snake/head-2.png" id="2_opl32"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iujm3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j2kkt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_opl32")
+}],
+"loop": true,
+"name": &"head",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opl32"]
+size = Vector2(50, 50)
+
+[node name="Snake" type="Area2D"]
+script = ExtResource("1_iujm3")
+metadata/_edit_group_ = true
+
+[node name="Head" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_iujm3")
+animation = &"head"
+frame_progress = 0.15441194
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_opl32")
