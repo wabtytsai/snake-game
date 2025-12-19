@@ -9,8 +9,6 @@ const grid_size = 50
 func _ready() -> void:
     var tail = tail_scene.instantiate()
     $Snake.add_next_body(tail)
-    tail.set_speed(grid_size)
-    $Snake.set_speed(grid_size)
     add_child(tail)
     $FruitTimer.start()
 
@@ -18,7 +16,8 @@ func _ready() -> void:
 func _on_fruit_eaten() -> void:
     var body = body_scene.instantiate()
     $Snake.add_next_body(body)
-    add_child(body)
+    $Snake.speed_up()
+    call_deferred("add_child", body)
     $FruitTimer.start()
 
 func _on_fruit_timer_timeout() -> void:

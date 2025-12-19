@@ -1,21 +1,21 @@
 extends Area2D
 
-var speed = 50
+var grid_size = 50
 var last_velocity = Vector2(0, -1)
 var is_moving = false
-var move_delay = 0.2
+var move_delay = 0.5
 var next_body: SnakeBody = null
 
 func _ready() -> void:
     is_moving = false
     $Head.play()
 
-func set_speed(new_speed):
-    speed = new_speed
 
+func speed_up() -> void:
+    move_delay *= 0.9
 
 func add_next_body(body: SnakeBody) -> void:
-    body.position = position + last_velocity * -speed
+    body.position = position + last_velocity * -grid_size
     var old_body = next_body
     next_body = body
     body.add_next_body(old_body)
@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
 
     if is_moving == false:
         var old_position = position
-        position += last_velocity * speed
+        position += last_velocity * grid_size
         next_body.move(old_position, position)
         set_animation(last_velocity)
         
