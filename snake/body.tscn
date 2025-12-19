@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cndt71xkvkow1" path="res://snake/body-1.png" id="2_7l0xe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opl32"]
-size = Vector2(50, 50)
+size = Vector2(44, 46)
 
-[node name="Body" type="Area2D"]
+[node name="Body" type="Area2D" groups=["snake_bodies"]]
 script = ExtResource("1_7l0xe")
 metadata/_edit_group_ = true
 

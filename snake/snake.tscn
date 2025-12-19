@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7n71nwatqscu"]
+[gd_scene load_steps=7 format=3 uid="uid://b7n71nwatqscu"]
 
 [ext_resource type="Script" uid="uid://5y54kp6eae3h" path="res://snake/snake.gd" id="1_iujm3"]
 [ext_resource type="Texture2D" uid="uid://dbtca54mg218v" path="res://snake/head-1.png" id="1_j2kkt"]
 [ext_resource type="Texture2D" uid="uid://b05pqhxkmkw5e" path="res://snake/head-2.png" id="2_opl32"]
+[ext_resource type="PackedScene" uid="uid://xkkcu7dlfa1k" path="res://snake/body.tscn" id="2_vtpab"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iujm3"]
 animations = [{
@@ -19,10 +20,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opl32"]
-size = Vector2(50, 50)
+size = Vector2(44, 46)
 
-[node name="Snake" type="Area2D"]
+[node name="Snake" type="Area2D" groups=["snake_bodies"]]
 script = ExtResource("1_iujm3")
+body_scene = ExtResource("2_vtpab")
 metadata/_edit_group_ = true
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
@@ -33,3 +35,5 @@ frame_progress = 0.15441194
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_opl32")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

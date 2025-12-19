@@ -1,16 +1,15 @@
 extends Area2D
 class_name SnakeBody
 
-const SPEED = 50
 var next_body: SnakeBody = null
 
 
-func set_next_link(body: SnakeBody) -> void:
+func add_next_body(body: SnakeBody) -> void:
     if not body:
         return
     var old_body = next_body
     next_body = body
-    body.set_next_link(old_body)
+    body.add_next_body(old_body)
 
 
 func move(new_position, _parent_position):
